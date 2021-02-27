@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Survey Result</title>
+        <meta description="description" content="The survey result.">
+        <meta charset="utf-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'result.css'%}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="info">
+            <h1>Submitted Info</h1>
+            <p>Name: <span>{{ name }}</span></p>
+            <p>Age: <span>{{ age }}</span></p>
+            <p>Gender: <span>{{ gender }}</span></p>
+            <p>Where you live: <span>{{ location }}</span></p>
+            <p>Where you've been: <span>{{ destinations }}</span></p>
+            <p>Your comments: <span>{{ comments }}</span></p>
+            <form action="" method="GET">
+                <button type="submit">Go back</button>
+            </form>
+            </div>
+        </div>
+    </body>
+</html>
