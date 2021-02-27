@@ -1,0 +1,40 @@
+/* * {
+    outline: 2px solid red;
+} */
+#wrapper, form, p, label {
+    display: flex;
+}
+#wrapper {
+    justify-content: center;
+    align-content: center;
+}
+form {
+    flex-direction: column;
+    padding: 2vh;
+    border: 1px solid black;
+    font-size: x-large;
+}
+p, label:hover, label {
+    justify-content: space-between;
+    font-size: x-large;
+}
+p {
+    padding: 1vh 0px 1vh 0px;
+}
+input {
+    margin: 0px 0px 0px 10vh;
+}
+textarea {
+    width: 25vh;
+    height: 5vh;
+    padding: 2vh;
+    margin: 0px 0px 0px 2vh;
+    resize: none;
+}
+button {
+    align-self: center;
+    width: 20vh;
+    padding: 1vh;
+    background-color: orange;
+    cursor: pointer;
+}

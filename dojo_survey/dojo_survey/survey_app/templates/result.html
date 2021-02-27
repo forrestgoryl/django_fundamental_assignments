@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Survey Result</title>
+        <meta description="description" content="The survey result.">
+        <meta charset="utf-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'result.css'%}">
+    </head>
+    <body>
+        {% for key, value in request.session.items %}
+            <div class="wrapper">
+                <div class="info">
+                    <h1>Submitted Info</h1>
+                    <p>Name: <span>{{ value.name }}</span></p>
+                    <p>Age: <span>{{ value.age }}</span></p>
+                    <p>Gender: <span>{{ value.gender }}</span></p>
+                    <p>Where you live: <span>{{ value.location }}</span></p>
+                    <p>Where you've been: 
+                        {% if 'destinations' in value %}
+                        <span>{{ value.destinations }}</span>
+                        {% endif %}
+                    </p>
+                    <p>Your comments: <span>{{ value.comments }}</span></p>
+                </div>
+            </div>
+        {% endfor %}
+        <form action="" method="GET">
+            <button type="submit">Go back</button>
+        </form>
+        <form action="wipe" method="POST">
+            {% csrf_token %}
+            <button type="submit">Wipe Session</button>
+        </form>
+    </body>
+</html>

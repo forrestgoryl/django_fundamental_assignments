@@ -1,0 +1,38 @@
+.wrapper, .info {
+    display: flex;
+    /* padding: 0px 20% 0px 20%; */
+}
+.wrapper {
+    justify-content: center;
+    align-content: center;
+    margin: 1vh 0px 1vh 0px;
+}
+.info {
+    flex-direction: column;
+    padding: 2vh;
+    border: 2px solid black;
+}
+p, h1 {
+    display: block;
+}
+p, h1 {
+    margin: 3vh 0px 3vh 0px;
+    padding: 1vh;
+}
+h1 {
+    text-decoration: underline;
+}
+p {
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+}
+span {
+    margin: 0px 0px 0px 5vh;
+}
+button {
+    width: 20vh;
+    padding: 1vh;
+    background-color: orange;
+    cursor: pointer;
+}
