@@ -9,34 +9,40 @@
     </head>
     <body>
         <div id="wrapper">
-            <form action="result" method="POST">
-                {% csrf_token %}
-                <p>Name:<input name="name" type="text"></p>
-                <p>Age: <input name="age" type="text"></p>
-                <p>Please select your gender:</p>
-                <label for="male">Male
-                    <input type="radio" name="gender" id="male" value="Male">
-                </label><br>
-                <label for="female">Female
-                    <input type="radio" name="gender" id="female" value="Female">
-                </label><br>
-                <label for="other">Other
-                    <input type="radio" name="gender" id="other" value="Other">
-                </label><br>
-                <p>Where do you live? <input name="location" type="text"></p>
-                <p>Have you been to these places?</p>
-                <label for="location1">China
-                    <input type="checkbox" id="location1" name="destinations" value="China">
-                </label>
-                <label for="location2">Russia
-                    <input type="checkbox" id="location2" name="destinations" value="Russia">
-                </label>
-                <label for="location3">Antarctica
-                    <input type="checkbox" id="location3" name="destinations" value="Antarctica">
-                </label>
-                <p class="comments">Comments: (Optional) <textarea name="comments"></textarea></p>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="form_wrap">
+                <form action="result" method="POST">
+                    {% csrf_token %}
+                    <p>Name:<input name="name" type="text"></p>
+                    <p>Age: <input name="age" type="text"></p>
+                    <p>Please select your gender:</p>
+                    <label for="male">Male
+                        <input type="radio" name="gender" id="male" value="Male">
+                    </label><br>
+                    <label for="female">Female
+                        <input type="radio" name="gender" id="female" value="Female">
+                    </label><br>
+                    <label for="other">Other
+                        <input type="radio" name="gender" id="other" value="Other">
+                    </label><br>
+                    <p>Where do you live? <input name="location" type="text"></p>
+                    <p>Have you been to these places?</p>
+                    <label for="location1">China
+                        <input type="checkbox" id="location1" name="destinations" value="China">
+                    </label>
+                    <label for="location2">Russia
+                        <input type="checkbox" id="location2" name="destinations" value="Russia">
+                    </label>
+                    <label for="location3">Antarctica
+                        <input type="checkbox" id="location3" name="destinations" value="Antarctica">
+                    </label>
+                    <p class="comments">Comments: (Optional) <textarea name="comments"></textarea></p>
+                    <button type="submit">Submit</button>
+                </form>
+                <form action="random_word" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Generator Random Word</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

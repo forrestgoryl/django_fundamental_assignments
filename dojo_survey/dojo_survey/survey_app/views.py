@@ -40,7 +40,6 @@ def result(request):
         print("No POST request was made. Redirecting...")
         return redirect("/")
 
-
 def wipe(request):
     request.session.flush()
     return redirect("/")
