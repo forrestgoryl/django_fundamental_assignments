@@ -1,0 +1,29 @@
+html, body {
+    height: 100%
+}
+#gold_collector, #locations, #activity_log {
+    outline: 1px solid green
+}
+#wrapper, #gold_collector, #locations, .location, #activity_log {
+    display: flex;
+}
+#wrapper, .location, #activity_log {
+    flex-direction: column;
+}
+#wrapper {
+    justify-content: center;
+    margin: 15vh 0px 0px 0px;
+}
+#locations {
+    justify-content: space-around;
+}
+#gold_collector, #activity_log, .gold_count {
+    padding: 0px 0px 0px 5vh;
+}
+#activity_log {
+    padding: 0px 10vh 0px 10vh;
+}
+.activity_box {
+    display: block;
+    min-height: 20vh;
+}
