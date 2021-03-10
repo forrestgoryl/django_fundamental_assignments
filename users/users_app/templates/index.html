@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Users App</title>
+        <meta description='description' context='A collection of users'>
+        <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' href='{% static "index.css"%}'>
+    </head>
+    <body>
+        <div id='webpage'>
+            <div class='users_wrapper'>
+                <h1>All the Users</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in all_the_users %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.last_name}}</td>
+                            <td>{{user.email_address}}</td>
+                            <td>{{user.age}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class='add_a_user'>
+                <h1>Add a User</h1>
+                <form action='add_user', method="POST">
+                    {% csrf_token %}
+                    <label for='first_name'>First Name:</label>
+                    <input type='text' name='first_name'>
+                    <label for='last_name'>Last Name:</label>
+                    <input type='text' name='last_name'><br>
+                    <label for='email_address'>Email:</label>
+                    <input type='text' name='email_address'>
+                    <label for='age'>Age:</label>
+                    <input type='text' name='age'><br>
+                    <button type='submit'>Add</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
