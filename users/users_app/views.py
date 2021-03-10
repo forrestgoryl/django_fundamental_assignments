@@ -12,7 +12,7 @@ def index(request):
 def add_user(request):
 #     db=MySQLdb.connect(host='localhost', user='root', passwd='root', db='mydb')
 #     db.query(f"""INSERT INTO mydb.users (first_name, last_name, email_address, age, created_at, updated_at)
-# VALUES ({request.POST['first_name']}, {request.POST['last_name']}, {request.POST['email_address']}, {request.POST['age']}, {datetime.datetime.now()}, {datetime.datetime.now()}""")
+# VALUES ('{request.POST['first_name']}', '{request.POST['last_name']}', '{request.POST['email_address']}', '{request.POST['age']}', '{datetime.datetime.now()}', '{datetime.datetime.now()}')""")
 #     db.commit()
     User.objects.create(
         first_name=request.POST['first_name'], 
