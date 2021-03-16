@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>TV Show {{ show_number }}</title>
+        <meta description='description' content='A description of show {{ show_number }}.'>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <h1>TV Show {{ show_number }}</h1>
+        <h4>Title: {{ title }}</h4>
+        <h4>Network: {{ network }}</h4>
+        <h4>Release Date: {{ release }}</h4>
+        <h4>Description: {{ desc }}</h4>
+        <h4 class='updated'>Last Updated: {{ updated_at }}</h4>
+        <form action='/shows/{{ show_number }}/edit' method="POST">
+            {% csrf_token %}
+            <button type='submit'>Edit</button>
+        </form> | 
+        <form action='/shows/{{ show_number }}/delete' method="POST"></form>
+            {% csrf_token %}
+            <button type='submit'>Delete</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Shows</title>
+        <meta description='description' context='A database view of all shows stored currently.'>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <h1>All Shows</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for show in object_list %}
+                <tr>
+                    <td>{{ show.id }}</td>
+                    <td>{{ show.title }}</td>
+                    <td>{{ show.network }}</td>
+                    <td>{{ show.release }}</td>
+                    <td>
+                        <form action='/shows/{{ show.id }}' method="POST">
+                            {% csrf_token %}
+                            <button type='submit'>Show</button>
+                        </form>
+                        <form action='/shows/{{ show.id }}/edit' method="POST">
+                            {% csrf_token %}
+                            <button type='submit'>Edit</button>
+                        </form>
+                        <form action='/shows/{{ show.id }}/delete' method="POST">
+                            {% csrf_token %}
+                            <button type='submit'>Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href='/shows/new'>Add a New Show</a>
+    </body>
+</html>
