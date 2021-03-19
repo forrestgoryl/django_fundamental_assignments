@@ -4,6 +4,8 @@
         <title>Shows</title>
         <meta description='description' context='A database view of all shows stored currently.'>
         <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' type="text/css" href='{% static "shows.css"%}'>
     </head>
     <body>
         <h1>All Shows</h1>
@@ -22,16 +24,13 @@
                     <td>{{ show.network }}</td>
                     <td>{{ show.release }}</td>
                     <td>
-                        <form action='/shows/{{ show.id }}' method="POST">
-                            {% csrf_token %}
+                        <form action='/shows/{{ show.id }}' method="GET">
                             <button type='submit'>Show</button>
                         </form>
-                        <form action='/shows/{{ show.id }}/edit' method="POST">
-                            {% csrf_token %}
+                        <form action='/shows/{{ show.id }}/edit' method="GET">
                             <button type='submit'>Edit</button>
                         </form>
-                        <form action='/shows/{{ show.id }}/delete' method="POST">
-                            {% csrf_token %}
+                        <form action='/shows/{{ show.id }}/delete' method="GET">
                             <button type='submit'>Delete</button>
                         </form>
                     </td>

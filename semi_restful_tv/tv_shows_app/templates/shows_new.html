@@ -4,22 +4,33 @@
         <title>Add a New Show</title>
         <meta description='description' content='Add a new show to the database.'>
         <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' type="text/css" href='{% static "shows_new_edit.css"%}'>
     </head>
     <body>
         <h1>Add a New Show</h1>
         <a href="/shows">Go Back</a>
+        {% if messages %}
+            <ul class='messages'>
+                {% for message in messages %}
+                    <li {% if message.tags %}class='{{ message.tags }}'{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <form action='/shows/create' method="POST">
             {% csrf_token %}
-            <label for='title'>Title</label>
-            <input type='text' name='title'>
-            <div class='network_and_release'>
-                <label for='network'>Network</label>
+            <label for='title'>Title
+                <input type='text' name='title'>
+            </label>
+            <label for='network'>Network
                 <input type='text' name='network'>
-                <label for='release'>Release Date</label>
+            </label>
+            <label for='release'>Release Date
                 <input type='datetime' name='release'>
-            </div>
-            <label for='desc'>Description</label>
-            <input type='textarea' name='desc'>
+            </label>
+            <label for='desc'>Description
+                <input type='textarea' name='desc'>
+            </label>
             <button type='submit'>Create</button>
         </form>
     </body>

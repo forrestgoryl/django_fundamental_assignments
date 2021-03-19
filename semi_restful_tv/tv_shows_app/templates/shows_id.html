@@ -2,8 +2,11 @@
 <html lang='en'>
     <head>
         <title>TV Show {{ show_number }}</title>
+        <a href="/shows">Go Back</a>
         <meta description='description' content='A description of show {{ show_number }}.'>
         <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' type="text/css" href='{% static "shows_id.css"%}'>
     </head>
     <body>
         <h1>TV Show {{ show_number }}</h1>
@@ -15,7 +18,7 @@
         <form action='/shows/{{ show_number }}/edit' method="POST">
             {% csrf_token %}
             <button type='submit'>Edit</button>
-        </form> | 
+        </form>
         <form action='/shows/{{ show_number }}/delete' method="POST"></form>
             {% csrf_token %}
             <button type='submit'>Delete</button>
