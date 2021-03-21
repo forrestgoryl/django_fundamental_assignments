@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta description='description' content='The landing page.'>
+        <meta charset='utf-8'>
+        {% if registered %}
+            <title>Successfully Registered</title>
+        {% endif %}
+        {% if not registered %}
+            <title>Successfully Logged In</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Success! Welcome, {{ first_name }}!</h1>
+        {% if registered %}
+            <h3>Successfully registered.</h3>
+        {% endif %}
+        {% if not registered %}
+            <h3>Successfully logged in.</h3> 
+        {% endif %}
+        <form action='/logout' method='POST'>
+            {% csrf_token %}
+            <button type='submit'>Log Out</button>
+        </form>
+    </body>
+</html>
