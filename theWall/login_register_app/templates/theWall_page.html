@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta description='description' content='The Wall.'>
+        <meta charset='utf-8'>
+        {% if registered %}
+            <title>Successfully Registered</title>
+        {% endif %}
+        {% if not registered %}
+            <title>Successfully Logged In</title>
+        {% endif %}
+        {% load static %}
+        <link rel='stylesheet' href='{% static "theWall.css"%}'>
+    </head>
+    <body>
+        <header>
+            <h1>Success! Welcome, {{ first_name }}!</h1>
+            {% if registered %}
+                <h3>Successfully registered.</h3>
+            {% endif %}
+            {% if not registered %}
+                <h3>Successfully logged in.</h3> 
+            {% endif %}
+            <form action='/logout' method='POST'>
+                {% csrf_token %}
+                <button type='submit'>Log Out</button>
+            </form>
+        </header>
+        <form class='message' action="/theWall/post_message" method="POST">
+            {% csrf_token %}
+            <h3>Post a message</h3>
+            <textarea name="message"></textarea>
+            <button type="submit">Post a message</button>
+        </form>
+        {% for object in messages %}
+            <h5>{{ object.user.f_name }} {{ object.user.l_name }} - {{ object.created_at }}</h5>
+            <p>{{ object.message }}</p>
+            {% for object in comments %}
+                <h6>{{ object.user.f_name }} {{ object.user.l_name }} - {{ object.created_at }}</h6>
+                <p>{{ object.comment }}</p>
+            {% endfor %}
+            <form class='message' action="/theWall/post_comment" method="POST">
+                {% csrf_token %}
+                <textarea class="comment" name="comment"></textarea>
+                <input type="hidden" name="message_id" value="{{ object.id }}">
+                <button class="comment_button" type="submit">Leave a comment</button>
+            </form>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    justify-content: space-evenly;
+}
+#register, #login {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: block;
+    margin: 1vh 0px 1vh 0px;
+}
+input {
+    display: flex;
+}

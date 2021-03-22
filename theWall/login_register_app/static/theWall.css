@@ -1,0 +1,26 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid black;
+}
+textarea {
+    resize: none;
+    height: 20vh;
+    width: 75vh;
+}
+.comment {
+    width: 35vh;
+    height: 10vh;
+}
+button {
+    display: block;
+    width: 25vh;
+    height: 5vh;
+    margin: 2vh 0px 0px 50vh;
+}
+.comment_button {
+    height: 3vh;
+    width: 13vh;
+    font-size: 1vh;
+}
