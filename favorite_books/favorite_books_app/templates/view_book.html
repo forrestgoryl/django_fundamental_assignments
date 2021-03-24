@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>{{ book.title }}'s Page</title>
+        <meta description='description' content='A description of {{ book.title }}.'>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <header>
+            <form action='/homepage' method='GET'>
+                <button type='submit'>Go back</button>
+            </form>
+        </header>
+        <div id='description'>
+            <h1>The book's title: {{ book.title }}</h1>
+            <h2>A short description: {{ book.description }}</h2>
+        </div>
+        <div id='favorited'>
+            <h1>The people who like this book:</h1>
+            <ul>
+                {% for person in people %}
+                    <li>{{ person.first_name }} {{ person.last_name }}</li>
+                {% endfor %}
+            </ul>
+            {% if book in user.uploaded_books.all %}
+                {% if not edit %}
+                    <form action='/edit_book' method='POST'>
+                        {% csrf_token %}
+                        <input type='hidden' name='id' value='{{ book.id }}'>
+                        <button type='submit'>Edit</button>
+                    </form>
+                    <form action='/delete' method='POST'>
+                        {% csrf_token %}
+                        <input type='hidden' name='id' value='{{ book.id }}'>
+                        <button type='submit'>Delete</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+            {% if edit %}
+                <form action='/edit' method='POST'>
+                    {% csrf_token %}
+                    <label for='title'>New Title:
+                        <input type='text' name='title'>
+                    </label>
+                    <label for='desription'>New Description:
+                        <textarea name='description'></textarea>
+                    </label>
+                    <input type='hidden' name='id' value='{{ book.id }}'>
+                    <button type='submit'>Update</button>
+                </form>
+                <form action='/delete' method='POST'>
+                    {% csrf_token %}
+                    <input type='hidden' name='id' value='{{ book.id }}'>
+                    <button type='submit'>Delete</button>
+                </form>
+            {% endif %}
+            {% if book in user.liked_books.all %}
+                <form action='/unfavorite' method='POST'>
+                    {% csrf_token %}
+                    <input type='hidden' name='id' value='{{ book.id }}'>
+                    <button type='submit'>Unfavorite</button>
+                </form>
+            {% endif %}
+        </div>
+    </body>
+</html>

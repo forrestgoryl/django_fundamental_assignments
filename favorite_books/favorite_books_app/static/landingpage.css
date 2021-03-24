@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    justify-content: space-evenly;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    display: flex;
+    margin: 1vh 0px 1vh 0px;
+    width: 30vh;
+}

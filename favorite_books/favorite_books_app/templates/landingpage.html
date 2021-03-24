@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>The login page</title>
+        <meta description='description' content='A page to log into your favorite_books account.'>
+        <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' href='{% static "landingpage.css"%}'>
+    </head>
+    <body>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> 
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <div id='registration'>
+            <h1>Registration</h1>
+            <form action='/register' method='POST'>
+                {% csrf_token %}
+                <label for='first_name'>First Name:
+                    <input type='text' name='first_name'>
+                </label>
+                <label for='last_name'>Last Name:
+                    <input type='text' name='last_name'>
+                </label>
+                <label for='email'>Email:
+                    <input type='text' name='email'>
+                </label>
+                <label for='password'>Password:
+                    <input type='text' name='password'>
+                </label>
+                <label for='confirm_password'>Confirm Password:
+                    <input type='text' name='confirm_password'>
+                </label>
+                <button type='submit'>Register</button>
+            </form>
+        </div>
+        <div id='login'>
+            <h1>Login</h1>
+            <form action='/login' method='POST'>
+                {% csrf_token %}
+                <label for='email'>Email:
+                    <input type='text' name='email'>
+                </label>
+                <label for='password'>Password:
+                    <input type='text' name='password'>
+                </label>
+                <button type='submit'>Login</button>
+            </form>
+        </div>
+    </body>
+</html>

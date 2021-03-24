@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>The homepage</title>
+        <meta description='description' content='The homepage.'>
+        <meta charset='utf-8'>
+        {% load static %}
+        <link rel='stylesheet' href='{% static "homepage.css"%}'>
+    </head>
+    <body>
+        <header>
+            <h1>You reached the homepage!</h1>
+            <h2>Hello {{ request.session.first_name }}</h2>
+            <form action='/logout' method='POST'>
+                {% csrf_token %}
+                <button type='submit'>Logout</button>
+            </form>
+        </header>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div id='main'>
+            <div class='add_book'>
+                <h1>Add a favorite book:</h1>
+                <form action='/add_book' method='POST'>
+                    {% csrf_token %}
+                    <label for='title'>Title:
+                        <input type='text' name='title'>
+                    </label>
+                    <label for='description'>Description:
+                        <textarea name='description'></textarea>
+                    </label>
+                    <button type='submit'>Add</button>
+                </form>
+            </div>
+            <div class='all_books'>
+                <h1>All Books</h1>
+                {% for book in books %}
+                    <h2 class='book_title'><a href="/view_book/{{ book.id }}">{{ book.title }}</a></h2>
+                    <h3>(added by {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }})</h3>
+                    <h4>(added on {{ book.created_at }})</h4>
+                    {% if book in favorites %}
+                        <i>This book is in your favorites</i>
+                    {% else %}
+                        <form action="/favorite_book" method="POST">
+                            {% csrf_token %}
+                            <input type='hidden' name='title' value='{{ book.title }}'>
+                            <button type='submit'>Add this book to favorites</button>
+                        </form>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid black;
+}
+#main {
+    display: flex;
+    justify-content: space-evenly;
+}
+.add_book form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: inline;
+    margin: 1vh 0px 1vh 0px;
+}
+input {
+    display: block;
+    float: right;
+    margin: 1vh 0px 1vh 0px;
+}
+textarea {
+    display: block;
+    float: right;
+    margin: 1vh 0px 1vh 0px;
+    resize: none;
+}
